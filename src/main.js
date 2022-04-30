@@ -2,9 +2,9 @@ import Bus from './bus';
 import Component from './component.vue';
 
 export default {
-    install: (app, options) => {
+    install(Vue) {
         // Global $vuedals property
-        Vue.prototype.$vuedals = {
+        Vue.prototype.$vuedals = new Vue({
             name: '$vuedals',
 
             created() {
@@ -46,7 +46,7 @@ export default {
                     Bus.$emit('dismiss', index);
                 }
             }
-        };
+        });
 
         // Mixer for components
         Vue.mixin({
